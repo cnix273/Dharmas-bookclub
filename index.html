@@ -3,10 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TEST</title>
+    <title>Foundation | Welcome</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
+
+    <!-- header -->
+    <header class="subnav-hero-section">
+      <h1 class="subnav-hero-headline">Foundation <small>by ZURB</small></h1>
+      <!-- <ul class="subnav-hero-subnav">
+        <li><a href="#">Take Action!</a></li>
+        <li><a href="#" class="is-active">Carpe Diem!</a></li>
+        <li><a target="_blank" href="https://zurb.com/responsive">Just do it!</a></li>
+      </ul> -->
+    </header>
+    
+    <!-- body framework -->
 
     <div class="off-canvas-wrapper">
       <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
@@ -15,9 +28,12 @@
           <div class="row column">
             <br>
             <img class="thumbnail" src="https://placehold.it/550x350">
-            <h5>Mike Mikerson</h5>
-            <p>Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo.</p>
+            <!-- <h5>Mike Mikerson</h5>
+            <p>Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo.</p> -->
+            <button class="button button-rounded-hover">Hover Button</button>
+            <button class="button button-rounded-hover">Hover Button</button>
           </div>
+        
         </div>
 
         <div class="off-canvas-content" data-off-canvas-content>
@@ -27,14 +43,38 @@
               <span class="title-bar-title">Mike Mikerson</span>
             </div>
           </div>
+
+          <!-- Search Bar -->
           <div class="callout primary">
             <div class="row column">
-              <h1>Hello! This is the portfolio of a very witty person.</h1>
-              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla.</p>
+              <h1>Search for Investors</h1>
+              <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla.</p> -->
+              <div class="input-group input-group-rounded">
+                <input class="input-group-field" type="search">
+                <div class="input-group-button">
+                  <input type="submit" class="button secondary" value="Search">
+                </div>
+              </div>
+              
+              </div>
+              
+                
+              
             </div>
-          </div>
+          
           <div class="row small-up-2 medium-up-3 large-up-4">
             
+          </div>
+          <!-- Cards -->
+          <div class="row small-up-2 medium-up-3 large-up-4">
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
           </div>
 
           <hr>
