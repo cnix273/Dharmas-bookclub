@@ -27,13 +27,40 @@
         <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
           <div class="row column">
             <br>
-            <img class="thumbnail" src="https://placehold.it/550x350">
             <!-- <h5>Mike Mikerson</h5>
             <p>Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo.</p> -->
-            <button class="button button-rounded-hover">Button 1</button>
-            <button class="button button-rounded-hover">Button 2 </button>
+            <button class="button button-rounded-hover" id="new-investor" data-open="modal">Add Investor Profile</button>
+            <p><button class="button" data-open="exampleModal1">Click me for a modal</button></p>
           </div>
-        
+          
+          <div class="reveal" id="modal" data-reveal>
+            <label>Name
+              <input type="text" placeholder="Name">
+            </label>
+            <label>Email
+              <input type="text" placeholder="Email">
+            </label>
+            <label> Phone Number
+              <textarea placeholder="Phone Number"></textarea>
+            </label>
+            <label> Message
+              <textarea placeholder="Investor Notes"></textarea>
+            </label>
+            <input type="submit" class="button expanded" value="Submit">
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <input type="submit" class="button expanded" value="Submit">
+          </div>
+          <div class="reveal" id="exampleModal1" data-reveal>
+            <h1>Awesome. I Have It.</h1>
+            <p class="lead">Your couch. It is mine.</p>
+            <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
         </div>
 
         <div class="off-canvas-content" data-off-canvas-content>
@@ -50,9 +77,9 @@
               <h1>Search for Investors</h1>
               <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla.</p> -->
               <div class="input-group input-group-rounded">
-                <input class="input-group-field" type="search">
+                <input class="input-group-field" type="search" id="search-bar" placeholder="Investor Name">
                 <div class="input-group-button">
-                  <input type="submit" class="button secondary" value="Search">
+                  <input type="submit" class="button secondary" value="Search" id="search-button">
                 </div>
               </div>
               
@@ -67,19 +94,13 @@
           </div>
           <!-- Cards -->
           <div class="row small-up-2 medium-up-3 large-up-4">
-            <div class="column">
-              <img class="thumbnail" src="https://placehold.it/550x550">
-              <h5>My Site</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="https://placehold.it/550x550">
-              <h5>My Site</h5>
+            <div class="column" id="investor-info">
             </div>
           </div>
 
           <hr>
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="medium-6 columns">
               <h3>Contact Me</h3>
               <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor.</p>
@@ -88,27 +109,15 @@
                 <li><a href="#">Facebook</a></li>
                 <li><a href="#">Yo</a></li>
               </ul>
-            </div>
-            <div class="medium-6 columns">
-              <label>Name
-                <input type="text" placeholder="Name">
-              </label>
-              <label>Email
-                <input type="text" placeholder="Email">
-              </label>
-              <label>
-                Message
-                <textarea placeholder="holla at a designerd"></textarea>
-              </label>
-              <input type="submit" class="button expanded" value="Submit">
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js"></script>
+    <script rel="script" href="script.js"></script>
     <script>
       $(document).foundation();
     </script>
