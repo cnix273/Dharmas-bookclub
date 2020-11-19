@@ -2,6 +2,18 @@ var searchBar = $("#search-bar");
 var searchBtn = $("#search-button");
 var bookList = $("#list")
 var bestsellerBtn = $("#bestseller-button");
+var bookSearch =$("#bookSearch")
+
+
+bookSearch.on("click",function() {
+  $(".searchBooks").show();
+  $("#list").empty();
+
+})
+
+
+
+
 
 searchBtn.on("click", function() {
   var queryparameter = searchBar.val().trim();
@@ -40,6 +52,8 @@ searchBtn.on("click", function() {
 
 bestsellerBtn.on("click", function(){
 
+  $(".searchBooks").hide();
+
     // NYT API KEY
     var APIKey = "wGMnvBDtb72OdTFeoSGYfHoRggjzSSGN";
     // NYT BEST SELLER API URL
@@ -59,16 +73,21 @@ bestsellerBtn.on("click", function(){
               "id":currentIndex,
               "class":"book-list",
           });
+          var bookRanking = $('<h3 class="rank">').text("# " + [currentIndex+1]+ " Best Seller" );
           var bookTitle = $("<h3>").text(response.results.books[currentIndex].title);
+          var bookAuthor = $("<h5>").text("by : "+response.results.books[currentIndex].author);
+
+
           var bookImg = $("<img>").attr("src", response.results.books[currentIndex].book_image).attr("class", "thumbnail");
           var bookDescription = $("<p>").text(response.results.books[currentIndex].description);
           // var bookPrice = $("<h5>").text("$"+response.results.books[currentIndex].price);
-          var bookAuthor = $("<h5>").text(response.results.books[currentIndex].author);
-          var book = 
-
-          main.append(bookTitle, bookAuthor, bookImg, bookDescription);
+          
+         
+          main.append(bookRanking, bookTitle, bookAuthor, bookImg, bookDescription);
 
           bookList.append(main);
         };
       });
 })
+$("[data-menu-underline-from-center] a").addClass("underline-from-center");
+
