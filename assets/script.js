@@ -4,7 +4,23 @@ var searchBtn = $("#search-button");
 var searchCtn = $(".searchBooks");
 var bookList = $("#list");
 var bestsellerBtn = $("#bestseller-button");
-var bookSearch =$("#bookSearch");
+var bookSearch = $("#bookSearch");
+var favoritesBtn = $("#favorites-button");
+
+// Array for Favorite Button selection
+// var favoriteArray = [];
+var favoriteArray = localStorage.getItem("bookFav");
+  
+  
+//   {
+//   "Title": BookName,
+//   "Author": BookAuthor
+// },{
+// "Title": BookName,
+// "Author": BookAuthor
+// }
+// ];
+
 
 
 // NYT API KEY & Path for Best Seller
@@ -24,7 +40,7 @@ $.ajax({
   .then(function(response) {
   
     //testing for API call object
-    // console.log(response);
+    console.log(response);
 
   // Random Variable between 0 and 4 chooses from NYT top 5 to display at open of Homepage
   var randomIndex = Math.floor(Math.random() * 5);
@@ -76,7 +92,7 @@ searchBtn.on("click", function() {
     .then(function(response2) {
 
       //testing for API call object
-      // console.log(response2); 
+      console.log(response2); 
 
       // Empties page for new elements
       bookList.empty();
@@ -91,20 +107,35 @@ searchBtn.on("click", function() {
         // Pulling property values from API call object & formatting them for display
         var bookTitle = $("<h3>").text(response2.items[currentIndex].volumeInfo.title).attr("style", "font-weight:bold").addClass("text-center");        
         var bookDescription = $("<p>").text(response2.items[currentIndex].volumeInfo.description).attr("style", "font-style:italic");
-        var bookAuthor = $("<h5>").text(response2.items[currentIndex].volumeInfo.author).addClass("text-center");
-
+        var bookAuthor = $("<h5>").text("by : " + response2.items[currentIndex].volumeInfo.authors).addClass("text-center");
+        var favoriteBookButton = $("<button class='button favorite'>").text("Favorite this Book.").attr("id", currentIndex);
         // Creates Book Image and attaches a link to buy book using API object's first URL option
         var buyBook = $("<a>").attr("href", response2.items[currentIndex].saleInfo.buyLink);
         var bookImg = $("<img>").attr("src", response2.items[currentIndex].volumeInfo.imageLinks.thumbnail).attr("class", "thumbnail");
 
         // Append & Displays all elements of current object into the page.
         buyBook.append(bookImg);
-        main.append(bookTitle, bookAuthor, buyBook, bookDescription);
+        main.append(bookTitle, bookAuthor, buyBook, bookDescription, favoriteBookButton);
         bookList.append(main);
 
+        
         // Script to remove Google Error
         document.cookie = 'cross-site-cookie=bar; SameSite=Lax';
       };
+
+      $(".favorite").on("click", function() {
+        var bookIndex = this.id;
+        var selectedOption = response2.items[bookIndex].volumeInfo.title + "+" + response2.items[bookIndex].volumeInfo.authors;
+        console.log(selectedOption);
+        
+        favoriteArray.push(selectedOption);
+
+        localStorage.setItem("bookFav", favoriteArray);
+
+
+      })
+
+
     });
   
 })
@@ -122,7 +153,7 @@ bestsellerBtn.on("click", function(){
       .then(function(response) {
 
         //testing for API call object
-        // console.log(response);
+        console.log(response);
 
         // Empties page for new elements
         bookList.empty();
@@ -130,7 +161,7 @@ bestsellerBtn.on("click", function(){
         // For loop builds first / top five object's from NYTime's Best Sellers List
         for(currentIndex=0; currentIndex<5; currentIndex++) {
           var main = $("<div>").attr({
-              "id":currentIndex,
+              
               "class":"book-list",
           });
           
@@ -139,20 +170,98 @@ bestsellerBtn.on("click", function(){
           var bookTitle = $("<h3>").text(response.results.books[currentIndex].title).attr("style", "font-weight:bold").addClass("text-center");
           var bookAuthor = $("<h5>").text("by : "+response.results.books[currentIndex].author).addClass("text-center");
           var bookDescription = $("<p>").text(response.results.books[currentIndex].description).attr("style", "font-style:italic");
-          
+          var favoriteBookButton = $("<button class='button favorite'>").text("Favorite this Book.").attr("id", currentIndex);
           // Creates Book Image and attaches a link to buy book using API object's first URL option
           var buyBook = $("<a>").attr("href", response.results.books[currentIndex].buy_links[0].url);
           var bookImg = $("<img>").attr("src", response.results.books[currentIndex].book_image).attr("class", "thumbnail");
          
           // Append & Displays all elements of current object into the page.
           buyBook.append(bookImg);
-          main.append(bookRanking, bookTitle, bookAuthor, buyBook, bookDescription);
+          main.append(bookRanking, bookTitle, bookAuthor, buyBook, bookDescription, favoriteBookButton);
           bookList.append(main);
+
+          
           
         // Script to remove Google Error
           document.cookie = 'cross-site-cookie=bar; SameSite=Lax';
         };
+
+        $(".favorite").on("click", function() {
+          var bookIndex = this.id;
+          var selectedOption = response.results.books[bookIndex].title + "+" + response.results.books[bookIndex].author;
+          console.log(selectedOption);
+          
+          favoriteArray.push(selectedOption);
+
+          localStorage.setItem("bookFav", favoriteArray);
+
+        })
+        
+        
+
       });
 })
+
+
+
+// Book Search Button searches Google Books for User Desired Author Input
+favoritesBtn.on("click", function() {
+  
+  console.log(favoriteArray);
+
+  bookList.empty();
+
+  for (currentIndex = 0; currentIndex < favoriteArray.length; currentIndex++) {
+
+  var queryparameter = favoriteArray[currentIndex];
+  
+  // API URL for 2nd API Get using book title from 1st CALL
+  var queryURL2 = "https://www.googleapis.com/books/v1/volumes?api_key=AIzaSyCvCbHEsrmpcGgxQmcSNDGpO1ghA3dcQUU&q=" + queryparameter;
+  $.ajax({
+    url: queryURL2,
+    method: "GET"
+  })
+    // We store all of the retrieved data inside of an object called "response"
+    .then(function(response2) {
+
+      //testing for API call object
+      // console.log(response2); 
+
+      // Empties page for new elements
+      
+
+
+      // For Loop builds top 5 objects found related to User's Input from Google Books API
+      
+        var main = $("<div>").attr({
+            
+            "class":"book-list",
+        });
+
+        // Pulling property values from API call object & formatting them for display
+        var bookTitle = $("<h3>").text(response2.items[currentIndex].volumeInfo.title).attr("style", "font-weight:bold").addClass("text-center");        
+        var bookDescription = $("<p>").text(response2.items[currentIndex].volumeInfo.description).attr("style", "font-style:italic");
+        var bookAuthor = $("<h5>").text("by : " + response2.items[currentIndex].volumeInfo.authors).addClass("text-center");
+
+        // Creates Book Image and attaches a link to buy book using API object's first URL option
+        var buyBook = $("<a>").attr("href", response2.items[currentIndex].saleInfo.buyLink);
+        var bookImg = $("<img>").attr("src", response2.items[currentIndex].volumeInfo.imageLinks.thumbnail).attr("class", "thumbnail");
+
+        // Append & Displays all elements of current object into the page.
+        buyBook.append(bookImg);
+        main.append(bookTitle, bookAuthor, buyBook, bookDescription);
+        bookList.append(main);
+
+        // Script to remove Google Error
+        document.cookie = 'cross-site-cookie=bar; SameSite=Lax';
+      
+    });
+  }
+
+  
+
+})
+
+
 $("[data-menu-underline-from-center] a").addClass("underline-from-center");
 
