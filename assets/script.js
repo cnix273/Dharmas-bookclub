@@ -11,14 +11,20 @@ var bookSearch =$("#bookSearch");
 var APIKey = "wGMnvBDtb72OdTFeoSGYfHoRggjzSSGN";
 var queryURL="https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=" + APIKey;
 
-// Random NYT best seller display
+randomNewYorkTimes();
+
+// Random NYT best seller display under Search Bar
+function randomNewYorkTimes(){
+
 // NYT API CALL
 $.ajax({
   url: queryURL,
   method: "GET"
 })
   .then(function(response) {
-  console.log(response);
+  
+    //testing for API call object
+    // console.log(response);
 
   // Random Variable between 0 and 4 chooses from NYT top 5 to display at open of Homepage
   var randomIndex = Math.floor(Math.random() * 5);
@@ -45,13 +51,14 @@ $.ajax({
   
   // Script to remove Google Error
   document.cookie = 'cross-site-cookie=bar; SameSite=Lax';
-})
+})}
 
 
 // Book search tab clears web page & populates Search form for user to search Google API via Author
 bookSearch.on("click",function() {
   searchCtn.show();
   $("#list").empty();
+  randomNewYorkTimes();
 })
 
 
@@ -69,7 +76,7 @@ searchBtn.on("click", function() {
     .then(function(response2) {
 
       //testing for API call object
-      console.log(response2); 
+      // console.log(response2); 
 
       // Empties page for new elements
       bookList.empty();
@@ -115,7 +122,7 @@ bestsellerBtn.on("click", function(){
       .then(function(response) {
 
         //testing for API call object
-        console.log(response);
+        // console.log(response);
 
         // Empties page for new elements
         bookList.empty();
