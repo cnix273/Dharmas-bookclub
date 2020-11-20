@@ -1,16 +1,52 @@
-## PROJECT-1
+# Project 1
+UCLA Coding Bootcamp Project 1
+Dharma Center Bookstore Search and Suggestion Application
 
-The application is designed for our Book Store Client to offer their customers a sleek and simple webpage to search for new book suggestions. Customers can enjoy methods to dynmaically create a short list of books to peruse. 1st, they may utilize our search bar to input their desired Author; upon reciept of input, we utilize Google's book API to generate findings and display them via dynamically created elements. 2nd, customers may be directed to our "Best Sellers" tab to have the application display New York Time's top 5 Best Sellers via dynamically created elements. At homepage, customers can view the search bar and one randomly suggested option from the NYT's best sellers list as a quick alternate suggestion rather than relying on inputting a specific author. 
+This application is designed to enhance Dharma Center Bookstore’s web presence for consumers. It utilizes the Google Books and New York Times Best Sellers list APIs to function as a sleek and simple search application. Consumers can use the search bar to find a book using the title or author. The application then dynamically creates five book suggestions based on their search parameters. Customers seeking book suggestions also have the ability to view the top five books on the New York Times Best Sellers list. The application also provides users the ability to save books to a favorites list for future reference. 
 
-All book images include a link to either NYTimes or Google Book's API object's URL for purchase. Some image links may not work due to API lacking live URL information.
+# Motivation
 
-## Demo
+Dharma, like other small businesses, functions mainly on a brick and mortar basis. Larger companies and competitors, such as Barnes & Noble, dominate the virtual world. In a market where brick and mortar is dying out and being largely replaced by ecommerce, small businesses like Dharma need to improve their web presence in order to survive and thrive. 
+
+# Features
+
+This application features:
+Foundations CSS Framework
+An interactive search bar and response to user input
+The use of two APIs
+Google Books
+New York Times Best Sellers List
+The usage of client side storage for the creation of users ‘Favorites Lists’
+A responsive layout
+Sophisticated and simple UI
+
+# Technologies Used
+
+- HTML
+- CSS
+- Javascript
+- Jquery
+
+# API References
+
+https://developers.google.com/books/docs/v1/reference/bookshelves
+https://developer.nytimes.com/docs/books-product/1/overview
+
+# Images
+<img src="assets/images/screenshot1.png">
+<img src="assets/images/screenshot2.png">
+<img src="assets/images/screenshot3.png">
+
+# Deployed Application Link
+https://cnix273.github.io/Dharmas-bookclub/
+
+
 
 ## Contributors
 
 Junior Developers
-. Cameron Nix
-. Ava Brenneke
-. Jaden Lee
-. Nick Johnson
-. Jonathan Yee
+- Cameron Nix
+- Ava Brenneke
+- Jaden Lee
+- Nick Johnson
+- Jonathan Yee
