@@ -12,8 +12,8 @@
 
     <div class="header">
       <div class="row column text-center">
-        <h1 class="title">Barnes & Noble's</h1>
-        <h2 class="subheader">Book Club Assitant</h2>
+        <h1 class="title">Dharma Center Book Store</h1>
+        <h2 class="subheader">Book Club Assistant</h2>
       </div>
     </div>
     <nav class="hover-underline-menu" data-menu-underline-from-center>
@@ -23,11 +23,13 @@
         <li><a href="#">Location</a></li>
       </ul>
     </nav>
-    <div class="container searchBooks">
-      
-      <div class="row column searhBar"></div>
-        <h4 >Search by title or author to find your next book club choice : </h4>
+
+    <div class="text-center container searchBooks">
+      <div class="row column"></div><br>
+        <h4>Search by title or author to find your next book club choice: </h4>
         <div class="input-group input-group-rounded">
+
+          <!--Search bar for Google API Author Search-->
           <input class="input-group-field" type="search" id="search-bar" placeholder="Enter Title or Author">
           <div class="input-group-button">
             <input type="submit" class="button secondary" value="Search" id="search-button">
@@ -35,8 +37,8 @@
         </div>
     </div>
     
-    <!-- We can now combine rows and columns when there's only one column in that row -->
-    <div class="context row medium-8 large-7 columns" id="list"></div>
+    <!-- Space for dynamically created elements, built from API call results -->
+    <div class="context row medium-8 large-7 grid-padding-3 columns" id="list"></div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
