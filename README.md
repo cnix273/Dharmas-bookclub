@@ -1,4 +1,4 @@
-# Project 1
+# Dharmas Bookclub
 UCLA Coding Bootcamp Project 1
 Dharma Center Bookstore Search and Suggestion Application
 
